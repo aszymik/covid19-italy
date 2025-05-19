@@ -14,20 +14,21 @@ mask = (df_daily['data'] >= start_date) & (df_daily['data'] <= end_date)
 df_wave3 = df_daily.loc[mask].copy()
 days = (df_wave3['data'] - pd.to_datetime(start_date)).dt.days.to_numpy()
 
-# SIRS model
-def sirs_model(y, t, beta, gamma, delta):
+# Seasonal SIRS model
+def seasonal_sirs_model(y, t, beta0, gamma, delta, alpha, period):
     S, I, R = y
     N = S + I + R
-    dSdt = -beta * S * I / N + delta * R
-    dIdt = beta * S * I / N - gamma * I
+    beta_t = beta0 * (1 + alpha * np.cos(2 * np.pi * t / period))
+    dSdt = -beta_t * S * I / N + delta * R
+    dIdt = beta_t * S * I / N - gamma * I
     dRdt = gamma * I - delta * R
     return [dSdt, dIdt, dRdt]
 
 beta = 0.28     # infection rate
 gamma = 0.21    # recovery rate
-delta = 0.03    # rate of  immunity loss
-
-# 0.27 i 0.2 całkiem ok
+delta = 0.01    # rate of  immunity loss
+alpha = 0.1     # amplitude of seasonal fluctuation
+period = 365
 
 # Initial conditions
 N = 60_000_000  # approximate Italy population
@@ -39,7 +40,7 @@ y0 = [S0, I0, R0]
 t = np.arange(0, len(df_wave3))
 
 # Solve equation
-sol = odeint(sirs_model, y0, t, args=(beta, gamma, delta))
+sol = odeint(seasonal_sirs_model, y0, t, args=(beta, gamma, delta, alpha, period))
 S, I, R = sol.T
 
 # Plot
@@ -66,4 +67,4 @@ fig.update_layout(
     hovermode='x unified'
 )
 
-fig.write_html('plots/sirs.html')
+fig.write_html('plots/seasonal_sirs.html')
