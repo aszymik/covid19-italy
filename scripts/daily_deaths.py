@@ -11,4 +11,5 @@ df_daily['nuovi_deceduti'] = df_daily['deceduti'].diff()
 fig = px.line(df_daily, x='data', y='nuovi_deceduti',
                          title='Daily New Deaths in Italy',
                          labels={'data': 'Date', 'nuovi_deceduti': 'New Deaths'})
-fig.show()
+
+fig.write_html('plots/daily_deaths.html')

@@ -9,6 +9,7 @@ df_daily = df.groupby('data', as_index=False)[['deceduti']].sum()
 
 # Plot total deaths
 fig = px.line(df_daily, x='data', y='deceduti',
-                     title='Total Coronavirus Deaths in Italy',
-                     labels={'data': 'Date', 'deceduti': 'Total Deaths'})
-fig.show()
+              title='Total Coronavirus Deaths in Italy',
+              labels={'data': 'Date', 'deceduti': 'Total Deaths'})
+
+fig.write_html('plots/total_deaths.html')

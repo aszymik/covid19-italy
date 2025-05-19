@@ -7,7 +7,8 @@ df['data'] = pd.to_datetime(df['data'])
 # Group by date (aggregate all regions)
 df_daily = df.groupby('data', as_index=False)[['totale_casi']].sum()
 
-fig_total_cases = px.line(df_daily, x='data', y='totale_casi',
-                          title='Total Coronavirus Cases in Italy',
-                          labels={'data': 'Date', 'totale_casi': 'Total Cases'})
-fig_total_cases.show()
+fig = px.line(df_daily, x='data', y='totale_casi',
+              title='Total Coronavirus Cases in Italy',
+              labels={'data': 'Date', 'totale_casi': 'Total Cases'})
+
+fig.write_html('plots/total_cases.html')
