@@ -18,4 +18,4 @@ fig = px.line(
     title='Newly Infected vs. Newly Recovered in Italy',
     labels={'value': 'New Daily Coronavirus Cases + Cured', 'variable': 'Group', 'data': 'Date'}
 )
-fig.show()
+fig.write_html('plots/inf_vs_rec.html')

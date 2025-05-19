@@ -11,4 +11,5 @@ df_daily = df.groupby('data', as_index=False)[['nuovi_positivi']].sum()
 fig = px.line(df_daily, x='data', y='nuovi_positivi',
                     title='Daily New Cases in Italy',
                     labels={'data': 'Date', 'nuovi_positivi': 'New Cases'})
-fig.show()
+
+fig.write_html('plots/daily_cases.html')
