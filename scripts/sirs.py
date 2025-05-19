@@ -66,4 +66,4 @@ fig.update_layout(
     hovermode='x unified'
 )
 
-fig.show()
+fig.write_html('plots/sirs.html')
