@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 
@@ -22,8 +21,8 @@ forecast_steps = (pd.to_datetime(forecast_end) - df_train.index[-1]).days
 
 # Fit SARIMAX model
 model = SARIMAX(df_train['totale_positivi'],
-                order=(30,7,7),              # you can tune this
-                seasonal_order=(30,7,7,365),   # weekly seasonality
+                order=(15,7,7),              # you can tune this
+                seasonal_order=(15,7,7,60),   # weekly seasonality
                 enforce_stationarity=False,
                 enforce_invertibility=False)
 

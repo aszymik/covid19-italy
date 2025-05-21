@@ -34,12 +34,11 @@ fig.add_trace(go.Scatter(
 
 # Customize layout
 fig.update_layout(
-    title='Daily Deaths in Italy',
+    title='Daily Coronavirus Deaths in Italy',
     xaxis_title='Date',
     yaxis_title='Number of Deaths',
     legend_title='Legend',
     hovermode='x unified',
 )
 
-fig.show()
 fig.write_html('plots/daily_deaths.html')
