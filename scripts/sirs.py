@@ -59,7 +59,7 @@ fig.add_trace(go.Scatter(
 
 # Layout and style
 fig.update_layout(
-    title='COVID-19 in Italy: SIRS Model for the Third Wave',
+    title='COVID-19 in Italy: SIRS Model Predictions',
     xaxis_title='Date',
     yaxis_title='Number of Infected People',
     legend_title='Legend',
