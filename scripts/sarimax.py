@@ -11,9 +11,6 @@ df_daily['data'] = pd.to_datetime(df_daily['data'])
 df_daily.set_index('data', inplace=True)
 
 # Define forecast range
-# train_end = '2022-05-22'
-# forecast_end = '2023-05-21'
-
 train_end = '2021-12-14'
 forecast_end = '2025-01-08'
 
@@ -26,8 +23,8 @@ df_train = df_train.asfreq('D')
 
 # Fit SARIMAX model
 model = SARIMAX(df_train['totale_positivi'],
-                order=(9,1,1),              # to tune
-                seasonal_order=(5,1,1,14),   # weekly seasonality
+                order=(6,1,1),              # to tune
+                seasonal_order=(6,1,1,9),   # weekly seasonality
                 enforce_stationarity=False,
                 enforce_invertibility=False)
 
@@ -39,7 +36,6 @@ forecast_index = pd.date_range(start=df_train.index[-1] + pd.Timedelta(days=1),
                                periods=forecast_steps, freq='D')
 
 predicted_mean = forecast.predicted_mean
-conf_int = forecast.conf_int()
 
 # Plot
 fig = go.Figure()
@@ -55,18 +51,6 @@ fig.add_trace(go.Scatter(
     x=forecast_index, y=predicted_mean,
     mode='lines', name='Forecast (SARIMAX)', line=dict(color='red')
 ))
-
-# Confidence interval
-# fig.add_trace(go.Scatter(
-#     x=forecast_index.tolist() + forecast_index[::-1].tolist(),
-#     y=conf_int.iloc[:, 0].tolist() + conf_int.iloc[:, 1][::-1].tolist(),
-#     fill='toself',
-#     fillcolor='rgba(255,0,0,0.2)',
-#     line=dict(color='rgba(255,255,255,0)'),
-#     hoverinfo="skip",
-#     showlegend=True,
-#     name='95% CI'
-# ))
 
 # Layout
 fig.update_layout(
