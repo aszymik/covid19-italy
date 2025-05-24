@@ -52,4 +52,4 @@ fig.update_layout(
 )
 
 fig.show()
-fig.write_html('plots/animated_province_cases_by_month.html')
+fig.write_html('plots/animated_region_cases_by_month.html')
