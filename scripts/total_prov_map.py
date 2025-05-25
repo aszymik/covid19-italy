@@ -43,3 +43,4 @@ fig.update_layout(
 )
 
 fig.write_html('plots/total_prov_map.html')
+fig.write_html('plots/total_prov_map.html')

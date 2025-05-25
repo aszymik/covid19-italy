@@ -29,3 +29,4 @@ fig.update_layout(
 )
 
 fig.write_html('plots/active_cases.html')
+fig.write_html('plots/active_cases.html')

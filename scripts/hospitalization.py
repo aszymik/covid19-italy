@@ -66,3 +66,5 @@ fig.update_layout(
 
 # fig.show()
 fig.write_html('plots/hospitalization.html')
+# fig.show()
+fig.write_html('plots/hospitalization.html')

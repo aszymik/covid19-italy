@@ -71,3 +71,5 @@ fig.update_layout(
 
 # fig.show()
 fig.write_html('plots/cases_distribution.html')
+# fig.show()
+fig.write_html('plots/cases_distribution.html')

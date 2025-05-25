@@ -79,3 +79,4 @@ fig.update_layout(
 )
 
 fig.write_html('plots/seasonal_sirs.html')
+fig.write_html('plots/seasonal_sirs.html')

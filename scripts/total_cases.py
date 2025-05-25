@@ -39,3 +39,4 @@ fig.update_layout(
 )
 
 fig.write_html('plots/total_cases.html')
+fig.write_html('plots/total_cases.html')
