@@ -49,6 +49,7 @@ fig.add_trace(go.Bar(
 ))
 
 fig.update_layout(
+    barmode='stack',
     title=dict(
         text='Cases Distribution by Region',
         font=dict(size=24)
