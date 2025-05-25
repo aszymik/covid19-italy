@@ -25,9 +25,7 @@ def sirs_model(y, t, beta, gamma, delta):
 
 beta = 0.28     # infection rate
 gamma = 0.21    # recovery rate
-delta = 0.03    # rate of  immunity loss
-
-# 0.27 i 0.2 całkiem ok
+delta = 0.03    # rate of immunity loss
 
 # Initial conditions
 N = 60_000_000  # approximate Italy population
@@ -45,25 +43,36 @@ S, I, R = sol.T
 # Plot
 fig = go.Figure()
 
-# Real daily new cases (full timeline)
+# Real daily new cases
 fig.add_trace(go.Scatter(
     x=df_daily['data'], y=df_daily['totale_positivi'],
     mode='lines', name='Real'
 ))
 
-# Predicted infections (SIRS model, third wave only)
+# SIRS predictions
 fig.add_trace(go.Scatter(
     x=df_wave3['data'], y=I,
     mode='lines', name='Predicted'
 ))
 
-# Layout and style
 fig.update_layout(
-    title='COVID-19 in Italy: SIRS Model Predictions',
-    xaxis_title='Date',
-    yaxis_title='Number of Infected People',
-    legend_title='Legend',
+    title=dict(
+        text='COVID-19 in Italy: SIRS Model Predictions',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='Number of Infected People', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    legend=dict(
+        title=dict(text='Legend', font=dict(size=17)),
+        font=dict(size=15)
+    ),
+    font=dict(size=13),
     hovermode='x unified'
 )
-
 fig.write_html('plots/sirs.html')

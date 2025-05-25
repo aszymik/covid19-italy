@@ -9,7 +9,23 @@ df_daily = df.groupby('data', as_index=False)[['totale_positivi']].sum()
 
 # Plot active cases
 fig = px.line(df_daily, x='data', y='totale_positivi',
-                    title='Active Cases in Italy',
                     labels={'data': 'Date', 'totale_positivi': 'Active Cases'})
+
+fig.update_layout(
+    title=dict(
+        text='Active Cases in Italy',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='Active Cases', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    font=dict(size=13),
+    hovermode='x unified'
+)
 
 fig.write_html('plots/active_cases.html')

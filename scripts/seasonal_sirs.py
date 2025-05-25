@@ -43,27 +43,38 @@ t = np.arange(0, len(df_wave3))
 sol = odeint(seasonal_sirs_model, y0, t, args=(beta, gamma, delta, alpha, period))
 S, I, R = sol.T
 
-# Plot
 fig = go.Figure()
 
-# Real daily new cases (full timeline)
+# Real daily new cases
 fig.add_trace(go.Scatter(
     x=df_daily['data'], y=df_daily['totale_positivi'],
     mode='lines', name='Real'
 ))
 
-# Predicted infections (SIRS model, third wave only)
+# Predicted infections
 fig.add_trace(go.Scatter(
     x=df_wave3['data'], y=I,
     mode='lines', name='Predicted'
 ))
 
-# Layout and style
 fig.update_layout(
-    title='COVID-19 in Italy: Seasonal SIRS Model Predictions',
-    xaxis_title='Date',
-    yaxis_title='Number of Infected People',
-    legend_title='Legend',
+    title=dict(
+        text='COVID-19 in Italy: Seasonal SIRS Model Predictions',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='Number of Infected People', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    legend=dict(
+        title=dict(text='Legend', font=dict(size=17)),
+        font=dict(size=15)
+    ),
+    font=dict(size=13),
     hovermode='x unified'
 )
 

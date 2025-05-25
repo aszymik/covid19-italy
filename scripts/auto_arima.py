@@ -51,7 +51,6 @@ forecast, conf_int = stepwise_model.predict(n_periods=forecast_steps, return_con
 forecast_index = pd.date_range(start=df_train.index[-1] + pd.Timedelta(days=1),
                                periods=forecast_steps, freq='D')
 
-# Plot
 fig = go.Figure()
 
 # Historical (train + future observed)
@@ -81,11 +80,25 @@ fig.add_trace(go.Scatter(
 ))
 
 fig.update_layout(
-    title='COVID-19 Forecast in Italy (Daily, auto_arima)',
-    xaxis_title='Date',
-    yaxis_title='Active Positive Cases',
+    title=dict(
+        text='COVID-19 Forecast in Italy (Daily, auto_arima)',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='Active Positive Cases', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    legend=dict(
+        title=dict(text='Legend', font=dict(size=17)),
+        font=dict(size=15)
+    ),
+    font=dict(size=13),
     hovermode='x unified'
 )
 
 fig.write_html('plots/auto_arima_forecast.html')
-fig.show()
+# fig.show()

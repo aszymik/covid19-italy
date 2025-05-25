@@ -28,13 +28,18 @@ fig = px.choropleth_mapbox(
 )
 fig.update_geos(fitbounds="locations", visible=True)
 fig.update_layout(
-    title_text='Total COVID-19 Cases in Italy by Province',
-    title_x=0.5,
-    title_y=0.98,
-    title_pad={"t": 40},
+    title=dict(
+        text='Total COVID-19 Cases in Italy by Province',
+        font=dict(size=24),
+        x=0.5,
+        y=0.98,
+        pad={"t": 40},
+    ),
+    font=dict(size=13),
+    hovermode='x unified',
     margin={"r":0,"t":80,"l":0,"b":0},
     height=980,
-    width=880
+    width=880,
 )
 
 fig.write_html('plots/total_prov_map.html')

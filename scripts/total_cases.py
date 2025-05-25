@@ -17,12 +17,24 @@ fig.add_trace(go.Scatter(
     hovertemplate='Total Infected: %{y:.5s}<extra></extra>'
 ))
 
-# Customize layout
 fig.update_layout(
-    title='Total Coronavirus Cases in Italy',
-    xaxis_title='Date',
-    yaxis_title='Total Infected',
-    legend_title='Legend',
+    title=dict(
+        text='Total Coronavirus Cases in Italy',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='Total infected', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    legend=dict(
+        title=dict(text='Legend', font=dict(size=17)),
+        font=dict(size=15)
+    ),
+    font=dict(size=13),  # default font for texts
     hovermode='x unified'
 )
 

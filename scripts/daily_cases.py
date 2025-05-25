@@ -31,13 +31,24 @@ fig.add_trace(go.Scatter(
     hovertemplate='7-Day Average: %{y:.5s}<extra></extra>'
 ))
 
-# Customize layout
 fig.update_layout(
-    title='Daily New COVID-19 Cases in Italy',
-    xaxis_title='Date',
-    yaxis_title='New Cases',
-    legend_title='Legend',
-    hovermode='x unified',
+    title=dict(
+        text='Daily New COVID-19 Cases in Italy',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='New Cases', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    legend=dict(
+        title=dict(text='Legend', font=dict(size=17)),
+        font=dict(size=15)
+    ),
+    font=dict(size=13),
+    hovermode='x unified'
 )
-
 fig.write_html('plots/daily_cases.html')

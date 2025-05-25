@@ -33,14 +33,25 @@ fig.add_trace(go.Scatter(
     hovertemplate='New Recoveries: %{y:.5s}<extra></extra>'
 ))
 
-# Customize layout
 fig.update_layout(
-    title='Newly Infected vs. Newly Recovered in Italy',
-    xaxis_title='Date',
-    yaxis_title='Number of People',
-    legend_title='Group',
+    title=dict(
+        text='Newly Infected vs. Newly Recovered in Italy',
+        font=dict(size=24)
+    ),
+    xaxis=dict(
+        title=dict(text='Date', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    yaxis=dict(
+        title=dict(text='Number of People', font=dict(size=19)),
+        tickfont=dict(size=15)
+    ),
+    legend=dict(
+        title=dict(text='Group', font=dict(size=17)),
+        font=dict(size=15)
+    ),
+    font=dict(size=13),
     hovermode='x unified'
 )
 
-fig.show()
 fig.write_html('plots/inf_vs_rec.html')
