@@ -51,8 +51,9 @@ Each plot has a corresponding script generating it in the `plots/` directory.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/covid19-italy.git
+git clone https://github.com/aszymik/covid19-italy.git
 cd covid19-italy
+pip install -r requirements.txt
 ```
 
 ## Data sources:
