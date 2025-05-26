@@ -53,6 +53,11 @@ Each plot has a corresponding script generating it in the `plots/` directory.
 ```bash
 git clone https://github.com/aszymik/covid19-italy.git
 cd covid19-italy
+```
+2. Create a virtual environment and install dependencies:
+```bash
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
