@@ -70,10 +70,8 @@ fig.update_layout(
     ),
     font=dict(size=13),
     hovermode='x unified',
-    margin=dict(l=20, r=10, b=10, t=30, pad=2)
+    # margin=dict(l=20, r=10, b=10, t=30, pad=2)
 )
 
-# fig.show()
-fig.write_html('plots/cases_distribution_region.html')
-# fig.show()
+fig.show()
 fig.write_html('plots/cases_distribution_region.html')
