@@ -1,4 +1,4 @@
-# 🇮🇹 COVID-19 in Italy: Data analysis and forecasting
+# 🇮🇹 COVID-19 Pandemics in Italy Analysis
 
 This project focuses on data analysis and modeling of the COVID-19 pandemic in Italy. It includes interactive visualizations, geographic insights, and time series forecasting using epidemiological and statistical models. 
 
